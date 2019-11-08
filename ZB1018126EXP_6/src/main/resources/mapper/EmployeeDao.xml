@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cslg.dao.EmployeeDao">
+
+<!--    List<Employee> getAll();-->
+    <select id="getAll" resultType="cslg.bean.Employee" >
+            select * from employees
+    </select>
+
+<!--    void insert(Employee employee);-->
+    <insert id="insert" parameterType="cslg.bean.Employee">
+        INSERT INTO employees(id,name,age,education,address,salary)
+          VALUES (#{id},#{name},#{age},#{education},#{address},#{salary})
+    </insert>
+<!--    void delete(int id);-->
+    <delete id="delete" parameterType="Integer">
+        delete  from employees where id = #{id}
+    </delete>
+<!--    void update(Employee employee);-->
+    <update id="update" parameterType="cslg.bean.Employee">
+        update employees set salary = #{salary} where id = #{id}
+    </update>
+</mapper>
